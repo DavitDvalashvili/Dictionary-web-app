@@ -4,7 +4,7 @@ import search from "../assets/icon-search.svg";
 import Result, { wordDataType } from "./Result";
 import Error from "./Error";
 //import { DataType } from "./Header";
-let data : wordDataType;
+let data: wordDataType;
 
 const Main = () => {
   const [findWord, setfindWord] = useState<boolean>(false);
@@ -12,7 +12,6 @@ const Main = () => {
   const [value, setValue] = useState<string>("");
   const [getDataCount, setGetDataCount] = useState<number>(0);
   //const [data, setData] = useState<dataType | null>
-  
 
   useEffect(() => {
     const requestData = async () => {
@@ -28,7 +27,17 @@ const Main = () => {
 
   return (
     <>
-      <div className="input_box bg-red-600 mt-[20px]">
+      <div
+        className="input_box bg-red-600 mt-[20px]"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            {
+              setGetDataCount(getDataCount + 1);
+              setSearching(true);
+            }
+          }
+        }}
+      >
         <input
           type="text"
           className=" mx-[24px]"
@@ -50,7 +59,21 @@ const Main = () => {
           }}
         />
       </div>
-      {searching && value && <div>{findWord ? <Result word={data.word} phonetic={data.phonetic} phonetics={data.phonetics} meanings={data.meanings}/> : <Error />}</div>}
+      {searching && value && (
+        <div>
+          {findWord ? (
+            <Result
+              sourceUrls={data.sourceUrls}
+              word={data.word}
+              phonetic={data.phonetic}
+              phonetics={data.phonetics}
+              meanings={data.meanings}
+            />
+          ) : (
+            <Error />
+          )}
+        </div>
+      )}
     </>
   );
 };
