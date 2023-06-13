@@ -1,3 +1,7 @@
 /* @import url("href=https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 @import url("href=https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap");
 @import url("href=https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap"); */
+
+.box-shadow {
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+}
