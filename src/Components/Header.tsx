@@ -16,10 +16,10 @@ const Header = (props: DataType) => {
   return (
     <header className="flex justify-between items-center">
       <img src={logo} alt="logo" className="w-[28px] h-8" />
-      <div className="flex justify-end items-center gap-3 relative">
+      <div className="flex justify-end items-center gap-3 md:gap-5 relative">
         <div
-          className=" h-8 flex items-center gap-4 justify-between pr-4 text-[#2D2D2D] font-bold 
-          text-[14px] leading-6 border-r-[1px] border-[#E9E9E9] cursor-pointer"
+          className=" h-8 flex items-center gap-4 md:gap-[18px] justify-between pr-4 md:pr-6 font-bold 
+          text-[14px] md:text-[18px] leading-6 md:leading-6 border-r-[1px] border-[#E9E9E9] cursor-pointer mr-1 md:mr-[6px]"
           onClick={() => {
             setShowFont(!showFont);
           }}
@@ -28,9 +28,7 @@ const Header = (props: DataType) => {
           <img src={arrow} alt="arrow" />
         </div>
         <div
-          className={
-            "w-10 h-5 bg-[#757575] rounded-[10px] p-[3px] cursor-pointer"
-          }
+          className={ props.darkTheme ? "toggleStyle bg-[#A445ED]" : "toggleStyle bg-[#757575]"}
           onClick={() => {
             props.toggleTheme();
           }}
@@ -51,13 +49,13 @@ const Header = (props: DataType) => {
         >
           <path
             fill="none"
-            stroke="#757575"
+            stroke={props.darkTheme ? "#A445ED" : "#757575" }
             d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 
             6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z"
           />
         </svg>
         {showFont && (
-          <div className="w-[183px] h-[152px] bg-white absolute right-[100px] top-[37px] p-6 box-shadow rounded-2xl flex flex-col gap-4 text-[18px] leading-6 font-bold z-10">
+          <div className={props.darkTheme ? "navStyles bg-[#050505] box-shadow-dark" : "navStyles bg-[#ffffff] box-shadow"}>
             <p className="font-sans cursor-pointer hover:text-[#A445ED]"
               onClick={() => {
                 props.changeFont("font-sans");

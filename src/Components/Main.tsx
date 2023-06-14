@@ -5,7 +5,10 @@ import Result, { wordDataType } from "./Result";
 import Error from "./Error";
 let data: wordDataType;
 
-const Main = () => {
+type darkTheme = {
+  darkTheme: boolean;
+}
+const Main = (props:darkTheme) => {
   const [findWord, setfindWord] = useState<boolean>(false);
   const [searching, setSearching] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
@@ -27,7 +30,7 @@ const Main = () => {
   return (
     <>
       <div
-        className="font-bold text-4 leading-5 mt-6 text-[#2D2D2D] relative"
+        className="font-bold text-4 md:text-[20px] md:leading-[21px] leading-5 mt-6 md:mt-[51.5px] relative"
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             {
@@ -40,7 +43,7 @@ const Main = () => {
       >
         <input
           type="text"
-          className="w-[100%] h-[48px] px-6 py-4 bg-[#F4F4F4] focus:outline-0 rounded-2xl placeholder:font-bold placeholder:text-4 placeholder:leading-[20px] focus:border-[1px] focus:border-[#A445ED]"
+          className={props.darkTheme ? "inputStyles bg-[#1f1f1f]" : "inputStyles bg-[#f4f4f4] "}
           placeholder="Search for any word..."
           onChange={(event) => {
             setValue(event.target.value);
@@ -52,7 +55,7 @@ const Main = () => {
         <img
           src={search}
           alt="search"
-          className="absolute right-6 top-4 h-4 cursor-pointer"
+          className="absolute right-6 md:top-6 top-4 h-4 cursor-pointer"
           onClick={() => {
             {
               setGetDataCount(getDataCount + 1);
@@ -61,7 +64,7 @@ const Main = () => {
             }
           }}
         />
-        {checkValue && <p className="text-[#FF5252] text-5 leading-6 font-normal">Whoops, can't be empty…</p>}
+        {checkValue && <p className="text-[#FF5252] text-5 leading-6 font-normal md:mt-2">Whoops, can't be empty…</p>}
       </div>
       {searching && value && (
         <div>
@@ -72,6 +75,7 @@ const Main = () => {
               phonetic={data.phonetic}
               phonetics={data.phonetics}
               meanings={data.meanings}
+              darkTheme={props.darkTheme}
             />
           ) : (
             <Error />
