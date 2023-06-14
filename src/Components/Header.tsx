@@ -18,8 +18,9 @@ const Header = (props: DataType) => {
       <img src={logo} alt="logo" className="w-[28px] h-8" />
       <div className="flex justify-end items-center gap-3 md:gap-5 relative">
         <div
-          className=" h-8 flex items-center gap-4 md:gap-[18px] justify-between pr-4 md:pr-6 font-bold 
-          text-[14px] md:text-[18px] leading-6 md:leading-6 border-r-[1px] border-[#E9E9E9] cursor-pointer mr-1 md:mr-[6px]"
+          className=" h-8 flex items-center gap-4 md:gap-[18px] justify-between 
+          pr-4 md:pr-6 font-bold text-[14px] md:text-[18px] leading-6 md:leading-6 
+          border-r-[1px] border-[#E9E9E9] cursor-pointer mr-1 md:mr-[6px]"
           onClick={() => {
             setShowFont(!showFont);
           }}
